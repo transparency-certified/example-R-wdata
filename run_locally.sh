@@ -6,6 +6,31 @@ repo=$(echo "${PWD##*/}" | tr [A-Z] [a-z])
 [[ -z $1 ]] && TAG=$(date +%F) || TAG=$1
 MYHUBID=larsvilhuber
 MYIMG=$repo
+DOCKERIMG=$MYHUBID/$MYIMG
 
-docker run -it --rm -v "$(pwd)":/home/rstudio -w /home/rstudio $MYHUBID/$MYIMG:$TAG Rscript programs/master.R
+echo "================================"
+echo "Running docker:"
+set -ev
+
+# When we are on Github Actions
+if [[ $CI ]] 
+then
+   DOCKEROPTS="--rm"
+   #DOCKERIMG=$(echo $GITHUB_REPOSITORY | tr [A-Z] [a-z])
+   TAG=latest
+else
+   DOCKEROPTS="-it --rm"
+   #DOCKERIMG=$MYHUBID/$MYIMG
+   [[ -z $TAG ]] && TAG=latest
+fi
+
+# ensure that the directories are writable by Docker
+chmod a+rwX data 
+
+
+time docker run $DOCKEROPTS \
+  -v "$(pwd)":/home/rstudio \
+  -w /home/rstudio \
+  $DOCKERIMG:$TAG Rscript programs/master.R
+
 
