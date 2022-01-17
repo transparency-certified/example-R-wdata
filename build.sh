@@ -11,3 +11,4 @@ DOCKER_BUILDKIT=1 docker build  . \
   -t $MYHUBID/${MYIMG}:$TAG
 
 echo "docker run -it --rm  $MYHUBID/${MYIMG}:$TAG"
+echo "docker push  $MYHUBID/${MYIMG}:$TAG"
