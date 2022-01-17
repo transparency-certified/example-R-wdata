@@ -33,7 +33,7 @@ jobs:
          with:
             username: ${{ secrets.DOCKERHUB_USERNAME }}
             password: ${{ secrets.DOCKERHUB_TOKEN }}
-            image: ${{ steps.repo_slug.outputs.result }}:latest
+            image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ steps.repo_slug.outputs.result }}:latest
             options: -v ${{ github.workspace }}:/home/rstudio 
             run: |
               Rscript "programs/master.R"
