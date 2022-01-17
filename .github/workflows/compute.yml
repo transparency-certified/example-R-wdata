@@ -21,7 +21,15 @@ jobs:
           result-encoding: string
           script: return '${{ github.repo.repo }}'.toLowerCase()
       -  name: Compute
-         run: "bash -x ./run_locally.sh latest"
+         uses: addnab/docker-run-action@v3
+         with:
+            username: ${{ secrets.DOCKERHUB_USERNAME }}
+            password: ${{ secrets.DOCKERHUB_TOKEN }}
+            image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ steps.repo_slug.outputs.result }}:latest
+            options: -v ${{ github.workspace }}:/home/rstudio 
+            run: |
+              Rscript "programs/master.R"
+         #run: "bash -x ./run_locally.sh latest ${{ secrets.DOCKERHUB_USERNAME }}"
       # send it to the results branch
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3.8.0
