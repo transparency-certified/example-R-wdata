@@ -4,7 +4,7 @@ repo=$(echo "${PWD##*/}" | tr [A-Z] [a-z])
 
 
 [[ -z $1 ]] && TAG=$(date +%F) || TAG=$1
-MYHUBID=larsvilhuber
+[[ -z $2 ]] && MYHUBID=larsvilhuber || MYHUBID=$2
 MYIMG=$repo
 DOCKERIMG=$MYHUBID/$MYIMG
 
