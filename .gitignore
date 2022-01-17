@@ -1,0 +1,5 @@
+*.dta
+*.gz
+*13568*
+*.csv
+.Rproj.user
