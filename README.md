@@ -1,3 +1,5 @@
+[![Create Table](https://github.com/labordynamicsinstitute/example-R-wdata/actions/workflows/compute.yml/badge.svg)](https://github.com/labordynamicsinstitute/example-R-wdata/actions/workflows/compute.yml)
+
 # README
 
 This is the same content as [labordynamicsinstitute/example-R-nodata](https://github.com/labordynamicsinstitute/example-R-nodata), with one key exception: The necessary data is included.
