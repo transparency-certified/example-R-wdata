@@ -44,7 +44,7 @@ if (file.exists("housing.dct.csv")) {
 }
 csvkit.fwf2csv(datpums, schmahu, file.path(outputdata,"housing.csv"))
 # because this runs asynchronously, but should be fast, we wait for 10 secs
-Sys.sleep(10)     
+Sys.sleep(1)
 hu <- read_csv(file.path(outputdata,"housing.csv"))
 saveRDS(hu,dtahu)
 
@@ -64,7 +64,7 @@ if (file.exists("person.dct.csv")) {
 }
 csvkit.fwf2csv(datpums, schmap, file.path(outputdata,"person.csv"))
 # because this runs asynchronously, but should be fast, we wait for 10 secs
-Sys.sleep(10)     
+Sys.sleep(1)
 p <- read_csv(file.path(outputdata,"person.csv"))
 saveRDS(p,dtap)
 
