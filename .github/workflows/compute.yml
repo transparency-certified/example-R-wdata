@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install dependencies
-        run: pip install git+https://github.com/transparency-certified/trace-poc
+        run: pip install git+https://github.com/transparency-certified/sample-trace-workflow
       - name: Submit to TRACE System
         run: |
           trace-poc submit --entrypoint "run.sh" --container-user rstudio --target-repo-dir "/home/rstudio" --trace-server https://server.trace-poc.xyz .
