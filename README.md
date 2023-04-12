@@ -12,7 +12,6 @@ Data is public-use, but normally requires login at ICPSR. Data can be downloaded
 
 ### Data acquisition
 
-
 We downloaded the file `ICPSR_13568-V1.zip` from ICPSR, then
 
 ```{bash}
